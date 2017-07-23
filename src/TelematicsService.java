@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  * Created by cdhorn on 7/21/17.
@@ -23,12 +24,15 @@ public class TelematicsService {
 
             fileWriter.write(json);
             fileWriter.close();
-
-            File fFile = new File(".");
-            for (File f: file.listFiles()) {
+            File newFile = new File(".");
+            for (File f: newFile.listFiles()) {
                 if (f.getName().endsWith(".json")) {
-                    ObjectMapper toJavaMapper = new ObjectMapper();
+                    Scanner fileScanner = new Scanner(f);
+                    String carInfo = fileScanner.nextLine();
+//                    ObjectMapper mapper = new ObjectMapper();
                     VehicleInfo vi = mapper.readValue(json, VehicleInfo.class);
+                    System.out.println("VI " + vi);
+                    System.out.println("carInfo " + carInfo);
                 }
             }
         } catch (JsonProcessingException ex) {
@@ -36,6 +40,7 @@ public class TelematicsService {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
     }
 
 }
