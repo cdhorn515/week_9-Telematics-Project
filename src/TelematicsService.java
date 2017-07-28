@@ -14,6 +14,8 @@ public class TelematicsService {
 
     //method with parameter vehicleInfo of type VehicleInfo
     public static void report(VehicleInfo vehicleInfo) {
+
+
         try {
             File file = new File(vehicleInfo.getVIN() + ".json");
 

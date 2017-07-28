@@ -9,9 +9,15 @@ public class VehicleInfo {
     private double odometerAtLastOilChange;
     private double engineSizeInLiters;
 
+
+
+    public double getMilesPerGallon(double milesTraveled, double gasConsumed) {
+        return milesTraveled / gasConsumed;
+    }
+
     //empty constructor (java bean)
     public VehicleInfo() {
-
+        getMilesPerGallon(getMilesTraveled(), getGasConsumed());
     }
 
     public int getVIN() {
@@ -21,7 +27,6 @@ public class VehicleInfo {
     public void setVIN(int VIN) {
         this.VIN = VIN;
     }
-
 
     public double getMilesTraveled() {
         return milesTraveled;
